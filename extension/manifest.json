@@ -1,0 +1,55 @@
+{
+	"manifest_version": 2,
+
+	"name": "Message passing example",
+	"short_name": "Sample 'message passing' browser extension",
+	"description": "Sample 'message passing' browser extension",
+	"version": "0.1",
+	"author": "Owen Mundy",
+	"icons": {
+		"16": "assets/img/icon-16x16.png",
+		"48": "assets/img/icon-48x48.png",
+		"128": "assets/img/icon-128x128.png"
+	},
+
+
+	"background": {
+		"scripts": [
+			"assets/js/background.js"
+		]
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"js": [
+			"assets/js/content.js"
+		],
+		"css": [
+			"assets/css/styles.css"
+		],
+		"run_at": "document_end"
+	}],
+	"browser_action": {
+		"default_icon": {
+			"16": "assets/img/icon-16x16.png",
+			"48": "assets/img/icon-48x48.png",
+			"128": "assets/img/icon-128x128.png"
+		},
+		"default_title": "This is popup.html",
+		"default_popup": "assets/popup/popup.html"
+	},
+
+
+	"permissions": [
+		"activeTab",
+		"storage",
+		"management"
+	],
+	"web_accessible_resources": [
+		"*.svg", "*.png",
+		"*.jpg", "*.JPG",
+		"*.gif", "*.GIF",
+		"/assets/*"
+	],
+	"content_security_policy": "script-src 'self'; object-src 'self';"
+
+}
