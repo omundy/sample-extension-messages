@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+	<style media="screen">
+		body {
+			width: 400px;
+			height: 320px;
+			padding: 10px;
+		}
+
+		#responseField {
+			width: 100%;
+			height: 160px;
+		}
+	</style>
+
+	<title>Popup</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<h3>popup.html</h3>
+
+				<button value="1" type="button" name="button" class="btn btn-primary increaseClicksBtn">+1</button>
+				<button value="2" type="button" name="button" class="btn btn-primary increaseClicksBtn">+2</button>
+				<button value="5" type="button" name="button" class="btn btn-primary increaseClicksBtn">+5</button>
+				<button value="10" type="button" name="button" class="btn btn-primary increaseClicksBtn">+10</button>
+				<button value="100" type="button" name="button" class="btn btn-primary increaseClicksBtn">+100</button>
+
+			</div>
+		</div>
+		<div class="row mt-2">
+			<div class="col">
+				<h5>Response</h5>
+				<textarea id="responseField"></textarea>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="../libs/jquery-3.6.0.min.js"></script>
+	<script src="../js/popup.js"></script>
+
+
+</body>
+
+</html>

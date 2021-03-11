@@ -1,6 +1,6 @@
 {
 	"esversion": 8,
-	"strict": "global",
+	"strict": "implied",
 	"devel": true,
 	"browser": true,
 	"node": true,
@@ -8,6 +8,7 @@
 	"undef": true,
 	"unused": false,
 	"globals": {
-		"$": false
+		"$": false,
+		"chrome": false
 	}
 }

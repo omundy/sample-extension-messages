@@ -1,9 +1,9 @@
 {
 	"manifest_version": 2,
 
-	"name": "Message passing example",
+	"name": "Sample Extension - 👀 Messages",
 	"short_name": "Sample 'message passing' browser extension",
-	"description": "Sample 'message passing' browser extension",
+	"description": "Uses localStorage, and content, background, and popup scripts to send, receive, and store data",
 	"version": "0.1",
 	"author": "Owen Mundy",
 	"icons": {
@@ -31,11 +31,12 @@
 	"browser_action": {
 		"default_icon": {
 			"16": "assets/img/icon-16x16.png",
+			"32": "assets/img/icon-32x32.png",
 			"48": "assets/img/icon-48x48.png",
 			"128": "assets/img/icon-128x128.png"
 		},
 		"default_title": "This is popup.html",
-		"default_popup": "assets/popup/popup.html"
+		"default_popup": "assets/pages/popup.html"
 	},
 
 
