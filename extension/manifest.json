@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 
-	"name": "Sample Extension - 👀 Messages",
-	"short_name": "Sample 'message passing' browser extension",
+	"name": "Sample Extension - 🐥 Messages",
+	"short_name": "🐥 Messages",
 	"description": "Uses localStorage, and content, background, and popup scripts to send, receive, and store data",
 	"version": "0.1",
 	"author": "Owen Mundy",

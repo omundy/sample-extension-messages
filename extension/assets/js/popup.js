@@ -2,8 +2,17 @@
  *	Javascript for the popup
  */
 
-// once document is loaded...
+// once document has loaded...
 $(document).ready(function() {
+
+	// get data on load
+	chrome.runtime.sendMessage({
+		sender: "popup",
+		action: "getData",
+	}, function(response) {
+		// invoke callback with response
+		displayResponse(response);
+	});
 
 	// add a click listener
 	$(".incrementBtn").click(function(e) {
@@ -15,6 +24,7 @@ $(document).ready(function() {
 		let msg = {
 			sender: "popup",
 			action: "increment", // what we want the background to do
+			field: "popupClicks",
 			data: val
 		};
 		// send message to background
@@ -35,6 +45,8 @@ $(document).ready(function() {
 			displayResponse(response);
 		});
 	});
+
+	// click listener for fail button
 	$(".failBtn").click(function(e) {
 		chrome.runtime.sendMessage({
 			sender: "popup",

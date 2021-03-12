@@ -1,0 +1,20 @@
+/* a button at bottom right of the page */
+.messagesButtonOnPage {
+	z-index: 99999999999;
+	position: fixed;
+	right: 70px;
+	bottom: 20px;
+	width: 44px;
+	height: 44px;
+	background-color: orange;
+	border: 2px solid orange;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 26px;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+.notify {
+	border: 2px solid #FFCC00;
+}
