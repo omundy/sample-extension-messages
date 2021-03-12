@@ -21,6 +21,7 @@
 	"content_scripts": [{
 		"matches": ["<all_urls>"],
 		"js": [
+			"assets/libs/jquery-3.6.0.min.js",
 			"assets/js/content.js"
 		],
 		"css": [
@@ -36,7 +37,7 @@
 			"128": "assets/img/icon-128x128.png"
 		},
 		"default_title": "This is popup.html",
-		"default_popup": "assets/pages/popup.html"
+		"default_popup": "popup.html"
 	},
 
 
