@@ -6,7 +6,8 @@ Uses localStorage, and content, background, and popup scripts to send, receive, 
 ### Demonstrates
 
 - Use of [Window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) to store data
-- Sending messages between content, background, and popup (a.k.a. "browser_action") scripts
+- Use of `chrome.runtime.sendMessage` and `chrome.runtime.onMessage` [to send messages between content, background, and popup (a.k.a. "browser_action") scripts](https://developer.chrome.com/docs/extensions/mv2/messaging/)
+
 
 
 ### Info
