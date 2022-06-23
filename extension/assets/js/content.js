@@ -30,11 +30,11 @@ $(document).ready(function() {
 		let msg = {
 			sender: "content",
 			action: "increment", // what we want the background to do
-			field: "contentClicks",
+			field: "pageClicks",
 			data: 1
 		};
 		// send message to background
-		chrome.runtime.sendMessage(msg, function(response) {
+		chrome.runtime.sendMessage(msg, (response) => {
 			// invoke callback with response
 			displayResponse(response);
 		});

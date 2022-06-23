@@ -2,7 +2,7 @@
  *	Javascript for the popup
  */
 
-// once document has loaded...
+// when the popup loads...
 $(document).ready(function() {
 
 	// get data on load
@@ -10,9 +10,11 @@ $(document).ready(function() {
 		sender: "popup",
 		action: "getData",
 	}, function(response) {
+		// alert(response);
 		// invoke callback with response
 		displayResponse(response);
 	});
+
 
 	// add a click listener
 	$(".incrementBtn").click(function(e) {
@@ -29,31 +31,35 @@ $(document).ready(function() {
 		};
 		// send message to background
 		chrome.runtime.sendMessage(msg, function(response) {
-			// invoke callback with response
+			// show response
 			displayResponse(response);
 		});
 	});
 
-	// click listener for reset button
+	// more click listeners
+	$(".getBtn").click(function(e) {
+		chrome.runtime.sendMessage({
+			sender: "popup",
+			action: "getData",
+		}, displayResponse);
+	});
 	$(".resetBtn").click(function(e) {
-		// when button clicked, send message to background
 		chrome.runtime.sendMessage({
 			sender: "popup",
-			action: "reset", // what we want the background to do
-		}, function(response) {
-			// invoke callback with response
-			displayResponse(response);
-		});
+			action: "reset",
+		}, displayResponse);
 	});
-
-	// click listener for fail button
-	$(".failBtn").click(function(e) {
+	$(".deleteBtn").click(function(e) {
 		chrome.runtime.sendMessage({
 			sender: "popup",
-			action: "", // oops, did we forget something?
-		}, function(response) {
-			displayResponse(response);
-		});
+			action: "delete",
+		}, displayResponse);
+	});
+	$(".allDataBtn").click(function(e) {
+		chrome.runtime.sendMessage({
+			sender: "popup",
+			action: "all",
+		}, displayResponse);
 	});
 
 });
