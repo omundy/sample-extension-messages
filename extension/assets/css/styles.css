@@ -14,7 +14,15 @@
 	font-size: 26px;
 	border-radius: 50%;
 	box-sizing: border-box;
+	opacity: 0.5;
 }
-.notify {
-	border: 2px solid #FFCC00;
+
+.messagesButtonOnPage a,
+.messagesButtonOnPage a:link,
+.messagesButtonOnPage a:visited,
+.messagesButtonOnPage a:hover,
+.messagesButtonOnPage a:active {
+	display: inline-block;
+	padding: 9px 0 0 0;
+	text-decoration: none !important;
 }

@@ -2,15 +2,31 @@
  *	Javascript for the content script
  */
 
+var active = 0;
 
 // called after response from background
 function displayResponse(response) {
 	// log the response object
 	console.log(response);
 	setTimeout(() => {
-		$('.messagesButtonOnPage').removeClass("notify");
+		displayActiveOff();
 	}, 1000);
 }
+
+function displayActive() {
+	active++;
+	if (active <= 1) {
+		// console.log("displayActive() active =", active);
+		$('.messagesButtonOnPage').fadeTo(200, 1);
+	}
+}
+
+function displayActiveOff() {
+	// console.log("❌ displayActiveOff() active =", active);
+	active = 0;
+	$('.messagesButtonOnPage').fadeTo(400, 0.5);
+}
+
 
 function getDoctype() {
 	var node = document.doctype;
@@ -37,16 +53,18 @@ $(document).ready(function() {
 		return;
 	}
 
-	// create button string and append it to page
-	let btn = "<button class='messagesButtonOnPage'>🐥</button>";
+	// create string and append it to page
+	let btn = "<div class='messagesButtonOnPage'><a href='#'>🐥</a></div>";
 	document.body.insertAdjacentHTML('beforeEnd', btn);
 
-	// add button listener
-	document.querySelector(".messagesButtonOnPage").addEventListener('click', () => {
+	// add listener
+	document.querySelector(".messagesButtonOnPage a").addEventListener('click', (event) => {
 		// console.log(".messagesButtonOnPage clicked");
 
-		// show a temp border around the button
-		$('.messagesButtonOnPage').addClass("notify");
+		event.preventDefault();
+
+		// show active
+		displayActive();
 
 		// create message object
 		let msg = {
@@ -72,11 +90,10 @@ $(document).ready(function() {
 
 	// on scroll
 	$(window).scroll(function() {
-		console.log('scroll detected', scrollDistance);
+		// console.log('scroll detected', scrollDistance);
 
-
-		// show a temp border around the button
-		$('.messagesButtonOnPage').addClass("notify");
+		// show active
+		displayActive();
 
 		// increase scroll distance
 		scrollDistance++;

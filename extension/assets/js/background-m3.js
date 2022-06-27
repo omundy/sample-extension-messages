@@ -139,6 +139,7 @@ const setStorageData = (key, data) =>
 // ===================================================
 // https://dev.to/paulasantamaria/chrome-extensions-local-storage-1b34
 // https://dev.to/milandhar/chrome-local-storage-in-extensions-4k9m
+// https://developer.chrome.com/docs/extensions/reference/storage/#type-StorageArea
 
 /**
  *	Log everything this extension has stored
@@ -188,6 +189,7 @@ let example = {
 // LOCALSTORAGE
 // - synchronous, works with all browsers
 // - NOT available for browser extension using Manifest 3 (or any service workers)
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 // set and get
 // localStorage.setItem('test', example);
 // console.log("localStorage", localStorage.getItem('test'));
