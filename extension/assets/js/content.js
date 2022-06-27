@@ -12,12 +12,34 @@ function displayResponse(response) {
 	}, 1000);
 }
 
+function getDoctype() {
+	var node = document.doctype;
+
+	if (node) {
+		return "<!DOCTYPE " +
+			node.name +
+			(node.publicId ? ' PUBLIC "' + node.publicId + '"' : '') +
+			(!node.publicId && node.systemId ? ' SYSTEM' : '') +
+			(node.systemId ? ' "' + node.systemId + '"' : '') +
+			'>';
+	} else {
+		return "";
+	}
+}
+
+
+
 
 $(document).ready(function() {
 
+	if (!getDoctype().toLowerCase().includes("html")) {
+		console.log("sample-extension-messages: only run on html pages", document.doctype);
+		return;
+	}
+
 	// create button string and append it to page
 	let btn = "<button class='messagesButtonOnPage'>🐥</button>";
-	document.body.insertAdjacentHTML('beforeend', btn);
+	document.body.insertAdjacentHTML('beforeEnd', btn);
 
 	// add button listener
 	document.querySelector(".messagesButtonOnPage").addEventListener('click', () => {
