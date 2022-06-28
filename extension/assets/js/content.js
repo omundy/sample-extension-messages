@@ -2,7 +2,11 @@
  *	Javascript for the content script
  */
 
-var active = 0;
+let active = 0,
+	scrollDistance = 0, // total distance scrolled
+	t, // timeout function
+	d = (new Date()).getTime(), // previous date().getTime
+	scrolling = false; // whether or not user is scrolling
 
 // called after response from background
 function displayResponse(response) {
@@ -10,7 +14,7 @@ function displayResponse(response) {
 	console.log(response);
 	setTimeout(() => {
 		displayActiveOff();
-	}, 1000);
+	}, 200);
 }
 
 function displayActive() {
@@ -24,7 +28,7 @@ function displayActive() {
 function displayActiveOff() {
 	// console.log("❌ displayActiveOff() active =", active);
 	active = 0;
-	$('.messagesButtonOnPage').fadeTo(400, 0.5);
+	$('.messagesButtonOnPage').fadeTo(1200, 0.5);
 }
 
 
@@ -43,6 +47,20 @@ function getDoctype() {
 	}
 }
 
+
+function sendToBackground(msg, callback) {
+	try {
+		// send message to background
+		chrome.runtime.sendMessage(msg, (response) => {
+			// invoke callback with response
+			displayResponse(response);
+			// if callback, do it
+			if (callback) callback();
+		});
+	} catch (err) {
+		console.error(err);
+	}
+}
 
 
 
@@ -74,19 +92,8 @@ $(document).ready(function() {
 			data: 1
 		};
 		// send message to background
-		chrome.runtime.sendMessage(msg, (response) => {
-			// invoke callback with response
-			displayResponse(response);
-		});
+		sendToBackground(msg);
 	}, false);
-
-
-
-
-	let scrollDistance = 0, // total distance scrolled
-		t, // timeout function
-		d = (new Date()).getTime(), // previous date().getTime
-		scrolling = false; // whether or not user is scrolling
 
 	// on scroll
 	$(window).scroll(function() {
@@ -128,11 +135,11 @@ $(document).ready(function() {
 			data: scrollDistance
 		};
 		// send message to background
-		chrome.runtime.sendMessage(msg, function(response) {
-			// reset scrollDistance after response
-			scrollDistance = 0;
-			// invoke callback with response
-			displayResponse(response);
-		});
+		sendToBackground(msg, resetScrollDistance);
 	});
 });
+
+function resetScrollDistance() {
+	// reset scrollDistance after response
+	scrollDistance = 0;
+}
